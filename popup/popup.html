@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Web Novel Analyzer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div id="not-configured" class="section" style="display: none;">
+            <p>为了使用分析功能，请先配置API</p>
+            <button id="goToOptions" class="primary-button">前往设置</button>
+        </div>
+
+        <div id="configured" class="section" style="display: none;">
+            <div class="header">
+                <h2>分析参数设置</h2>
+            </div>
+
+            <div class="settings-group">
+                <div class="form-item">
+                    <label for="temperature">Temperature</label>
+                    <div class="slider-container">
+                        <input type="range" id="temperature" min="0" max="2" step="0.1" value="0.7">
+                        <span id="temperatureValue">0.7</span>
+                    </div>
+                    <div class="help-text">控制输出的创造性，较高的值会产生更多样化的结果</div>
+                </div>
+
+                <div class="form-item">
+                    <label for="topP">Top-P</label>
+                    <div class="slider-container">
+                        <input type="range" id="topP" min="0" max="1" step="0.1" value="1">
+                        <span id="topPValue">1.0</span>
+                    </div>
+                    <div class="help-text">控制输出的确定性，较低的值会产生更确定的结果</div>
+                </div>
+
+                <div class="form-item">
+                    <label for="maxTokens">最大输出tokens</label>
+                    <input type="number" id="maxTokens" min="1" value="8192">
+                    <div class="help-text">限制单次分析的输出长度</div>
+                </div>
+
+                <div class="form-item">
+                    <label for="maxInputTokens">最大输入tokens</label>
+                    <input type="number" id="maxInputTokens" min="1" value="8192">
+                    <div class="help-text">限制单次分析的输入长度</div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button id="saveSettings" class="primary-button">保存设置</button>
+                <button id="openOptions" class="secondary-button">更多设置</button>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

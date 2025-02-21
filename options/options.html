@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Web Novel Analyzer 设置</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- API 配置和模型设置 -->
+            <div id="api-settings" class="content-section active">
+                <div class="section-header">
+                    <h2>API 配置</h2>
+                    <p class="section-description">配置API接入信息和模型参数</p>
+                </div>
+                <div class="settings-card">
+                    <div class="form-group">
+                        <div class="input-field">
+                            <label for="apiEndpoint">API 地址</label>
+                            <input type="text" id="apiEndpoint" name="apiEndpoint"
+                                   placeholder="例如: https://api.openai.com/v1">
+                        </div>
+                        <div class="input-field">
+                            <label for="apiKey">API 密钥</label>
+                            <div class="password-field">
+                                <input type="password" id="apiKey" name="apiKey"
+                                       placeholder="输入您的API密钥">
+                                <button class="toggle-password" type="button">
+                                    <span class="eye-icon">👁️</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="model-selection">
+                            <label for="model">选择模型</label>
+                            <select id="model" name="model">
+                                <option value="">请先检测可用模型</option>
+                            </select>
+                            <button id="detectModels" class="secondary-button compact">
+                                <span class="button-icon">🔍</span>
+                                检测可用模型
+                            </button>
+                        </div>
+                        <div class="model-info">
+                            推荐使用 GPT-3.5 或更高版本以获得更好的分析效果
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 快捷键设置部分 -->
+            <div id="shortcut-settings" class="content-section">
+                <div class="section-header">
+                    <h2>快捷键设置</h2>
+                    <p class="section-description">自定义分析功能的快捷键</p>
+                </div>
+                <div class="settings-card">
+                    <div class="shortcut-group">
+                        <div class="current-shortcut">
+                            <label>当前快捷键</label>
+                            <div class="shortcut-display" id="currentShortcut">Alt + Q</div>
+                            <button id="changeShortcut" class="secondary-button">
+                                <span class="button-icon">⌨️</span>
+                                修改快捷键
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部操作栏 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <button id="testConnection" class="secondary-button">
+                    <span class="button-icon">🔌</span>
+                    测试连接
+                </button>
+                <button id="saveSettings" class="primary-button">
+                    <span class="button-icon">💾</span>
+                    保存设置
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 状态提示 -->
+    <div id="status" class="status-message">
+        <span class="status-text"></span>
+        <button class="close-status">×</button>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
